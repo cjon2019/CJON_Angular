@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { 
   MatToolbarModule, 
@@ -16,6 +17,11 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { JobComponent } from './components/job/job.component';
 import { HeaderComponent } from './components/header/header.component';
 
+const routes = [
+  { path: 'register', component: RegistrationComponent },
+  { path: '**', component: RegistrationComponent }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +34,7 @@ import { HeaderComponent } from './components/header/header.component';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    RouterModule.forRoot(routes),
     ReactiveFormsModule,
     MatToolbarModule,
     MatButtonModule,
