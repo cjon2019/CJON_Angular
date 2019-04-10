@@ -21,6 +21,7 @@ import { HeaderComponent } from './components/header/header.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', component: RegistrationComponent }
 ];
 
