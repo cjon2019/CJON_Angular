@@ -10,6 +10,7 @@ import {
   MatInputModule
 } from '@angular/material';
 
+import { AuthService } from './services/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -41,7 +42,9 @@ const routes = [
     MatFormFieldModule,
     MatInputModule
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
