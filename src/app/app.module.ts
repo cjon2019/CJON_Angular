@@ -16,8 +16,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
-import { JobComponent } from './components/job/job.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { JobsService } from './services/jobs.service';
+import { JobsIndexComponent } from './components/jobs/jobs-index/jobs-index.component';
+import { JobsDetailComponent } from './components/jobs/jobs-detail/jobs-detail.component';
+import { JobsChartComponent } from './components/jobs/jobs-chart/jobs-chart.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -30,8 +33,10 @@ const routes = [
     AppComponent,
     LoginComponent,
     RegistrationComponent,
-    JobComponent,
-    NavbarComponent
+    NavbarComponent,
+    JobsIndexComponent,
+    JobsDetailComponent,
+    JobsChartComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +51,9 @@ const routes = [
     MatInputModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    JobsService
+    
   ],
   bootstrap: [AppComponent]
 })
