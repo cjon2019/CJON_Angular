@@ -22,10 +22,19 @@ import { JobsIndexComponent } from './components/jobs/jobs-index/jobs-index.comp
 import { JobsDetailComponent } from './components/jobs/jobs-detail/jobs-detail.component';
 import { JobsChartComponent } from './components/jobs/jobs-chart/jobs-chart.component';
 import { JobsGraphComponent } from './components/jobs/jobs-graph/jobs-graph.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
+  { 
+    path: 'jobs', canActivate: [AuthGuard] , children: [
+      { path: '', component: JobsIndexComponent },
+      { path: 'detail/:id', component: JobsDetailComponent },
+      { path: 'chart', component: JobsChartComponent },
+      { path: 'graph', component: JobsGraphComponent }
+    ]
+  },
   { path: '**', component: RegistrationComponent }
 ];
 
@@ -55,7 +64,6 @@ const routes = [
   providers: [
     AuthService,
     JobsService
-    
   ],
   bootstrap: [AppComponent]
 })
