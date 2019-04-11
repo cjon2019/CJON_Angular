@@ -1,3 +1,4 @@
+//Values used to create a new User
 export interface RegisterUser {
     firstName: string;
     lastName: string;

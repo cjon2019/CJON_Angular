@@ -9,9 +9,12 @@ import { AuthService } from '../../services/auth.service';
 })
 export class RegistrationComponent implements OnInit {
 
+  // sets _registerForm to be a form
   private _registerForm: FormGroup;
 
+  // Forms and Services needed for the creation of the Register Page.
   constructor(private _form: FormBuilder, private _authService: AuthService) {
+    // creates the form
     this.createForm();
   }
 
@@ -19,6 +22,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   createForm() {
+    // Each input field variable for the Register User Form
     this._registerForm = this._form.group({
       firstName: new FormControl,
       lastName: new FormControl,
@@ -29,6 +33,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   onSubmit() {
+    // Registers the user into the database, Adds in authService permissions to the newly created user.
     console.log(this._registerForm.value);
     this._authService
       .register(this._registerForm.value)

@@ -21,6 +21,7 @@ import { JobsService } from './services/jobs.service';
 import { JobsIndexComponent } from './components/jobs/jobs-index/jobs-index.component';
 import { JobsDetailComponent } from './components/jobs/jobs-detail/jobs-detail.component';
 import { JobsChartComponent } from './components/jobs/jobs-chart/jobs-chart.component';
+import { JobsGraphComponent } from './components/jobs/jobs-graph/jobs-graph.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -36,7 +37,8 @@ const routes = [
     NavbarComponent,
     JobsIndexComponent,
     JobsDetailComponent,
-    JobsChartComponent
+    JobsChartComponent,
+    JobsGraphComponent
   ],
   imports: [
     BrowserModule,

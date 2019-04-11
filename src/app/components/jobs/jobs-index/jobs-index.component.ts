@@ -11,12 +11,16 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class JobsIndexComponent implements OnInit {
 
+  // Table names of the Jobs table
   columnNames = [];
+  // the source of the data in the Table
   dataSource: MatTableDataSource<Job>
 
+  // Uses the service JobsService in any below functions needed to use its services
   constructor(private _jobsService: JobsService) { }
 
   ngOnInit() {
+    // Gets all jobs in the job table and sets it to a datasource
     this._jobsService.getJobs().subscribe((jobs: Job[]) => {
       this.dataSource = new MatTableDataSource<Job>(jobs);
     });
