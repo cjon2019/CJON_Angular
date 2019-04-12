@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { CanActivate, Router } from '@angular/router';
-import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 
 // AuthGuard is used on app routes to control those able to access the path to have to be registered users.
