@@ -20,8 +20,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobsService } from './services/jobs.service';
 import { JobsIndexComponent } from './components/jobs/jobs-index/jobs-index.component';
 import { JobsDetailComponent } from './components/jobs/jobs-detail/jobs-detail.component';
-import { JobsChartComponent } from './components/jobs/jobs-chart/jobs-chart.component';
-import { JobsGraphComponent } from './components/jobs/jobs-graph/jobs-graph.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IndexComponent } from './components/index/index.component';
 
@@ -32,8 +30,6 @@ const routes = [
     path: 'jobs', canActivate: [AuthGuard] , children: [
       { path: '', component: JobsIndexComponent },
       { path: 'detail/:id', component: JobsDetailComponent },
-      { path: 'chart', component: JobsChartComponent },
-      { path: 'graph', component: JobsGraphComponent }
     ]
   },
   { path: '**', component: IndexComponent }
@@ -47,8 +43,6 @@ const routes = [
     NavbarComponent,
     JobsIndexComponent,
     JobsDetailComponent,
-    JobsChartComponent,
-    JobsGraphComponent,
     IndexComponent,
   ],
   imports: [
