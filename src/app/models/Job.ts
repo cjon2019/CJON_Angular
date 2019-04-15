@@ -5,9 +5,8 @@ export interface Job {
     PositionLocation: object;
     PositionStartDate: Date;
     PositionEndDate: Date;
-    MajorDuties: Text;
-    Requirements: Text;
     JobSummary: Text;
-    LowGrade: string;
-    HighGrade: string;
+    MinimumRange: number;
+    MaximumRange: number;
+    RateIntervalCode: string;
 }
