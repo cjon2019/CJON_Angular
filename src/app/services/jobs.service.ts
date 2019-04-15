@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Job } from '../models/Job';
-import { getHashes } from 'crypto';
 
 const ApiUrl = '';
 
@@ -9,6 +8,8 @@ const ApiUrl = '';
   providedIn: 'root'
 })
 export class JobsService {
+
+  job: Job;
 
   constructor(private _http: HttpClient) { }
 
