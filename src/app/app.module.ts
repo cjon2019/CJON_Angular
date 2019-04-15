@@ -24,6 +24,7 @@ import { JobsChartComponent } from './components/jobs/jobs-chart/jobs-chart.comp
 import { JobsGraphComponent } from './components/jobs/jobs-graph/jobs-graph.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IndexComponent } from './components/index/index.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -50,6 +51,7 @@ const routes = [
     JobsChartComponent,
     JobsGraphComponent,
     IndexComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
