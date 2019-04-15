@@ -23,6 +23,7 @@ import { JobsDetailComponent } from './components/jobs/jobs-detail/jobs-detail.c
 import { JobsChartComponent } from './components/jobs/jobs-chart/jobs-chart.component';
 import { JobsGraphComponent } from './components/jobs/jobs-graph/jobs-graph.component';
 import { AuthGuard } from './guards/auth.guard';
+import { IndexComponent } from './components/index/index.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -35,7 +36,7 @@ const routes = [
       { path: 'graph', component: JobsGraphComponent }
     ]
   },
-  { path: '**', component: RegistrationComponent }
+  { path: '**', component: IndexComponent }
 ];
 
 @NgModule({
@@ -47,7 +48,8 @@ const routes = [
     JobsIndexComponent,
     JobsDetailComponent,
     JobsChartComponent,
-    JobsGraphComponent
+    JobsGraphComponent,
+    IndexComponent,
   ],
   imports: [
     BrowserModule,
