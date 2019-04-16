@@ -28,18 +28,17 @@ import { UserComponent } from './components/user/user.component';
 import { JobsListComponent } from './components/jobs-list/jobs-list.component';
 import { DisplayComponent } from './components/jobs-list/display/display.component';
 import { HeaderComponent } from './components/jobs-list/header/header.component';
-
+import { FooterComponent } from './components/footer/footer.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { 
-    path: 'jobs-list', canActivate: [AuthGuard] , children: [
+  { path: 'jobs-list', canActivate: [AuthGuard] , children: [
       { path: '', component: JobsIndexComponent },
       { path: 'display', component: DisplayComponent },
       { path: 'finances', component: FinancesComponent },
       { path: 'header', component: HeaderComponent },
-      { path: 'summary', components: SummaryComponent }
+      { path: 'summary', component: SummaryComponent }
     ]
   },
   { path: '**', component: IndexComponent }
@@ -59,6 +58,8 @@ const routes = [
     UserComponent,
     JobsListComponent,
     DisplayComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
