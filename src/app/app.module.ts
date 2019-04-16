@@ -33,13 +33,19 @@ import { FooterComponent } from './components/footer/footer.component';
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'jobs-list', canActivate: [AuthGuard] , children: [
+  {
+    path: 'jobs-list', canActivate: [AuthGuard], children: [
       { path: '', component: JobsIndexComponent },
       { path: 'display', component: DisplayComponent },
       { path: 'finances', component: FinancesComponent },
       { path: 'header', component: HeaderComponent },
-      { path: 'summary', component: SummaryComponent }
-    ]
+      { path: 'summary', component: SummaryComponent },
+    ],
+  },  
+  {
+   path: 'about', children: [
+      { path: '', component: AboutComponent },
+    ],
   },
   { path: '**', component: IndexComponent }
 
