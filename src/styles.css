@@ -1,13 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+@import '../node_modules/@angular/material/prebuilt-themes/indigo-pink.css';
 
 body, html {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', 'Arial', sans-serif;
-    align-content: stretch;
-}
-
-.form {
-    align-content: stretch;
+    background-color: #ede6e3;
 }

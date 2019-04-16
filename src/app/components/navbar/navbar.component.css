@@ -4,5 +4,9 @@
 
 .nav-btn {
     margin-right: 0.5em;
-    background-color: #132584;
+    background-color: whitesmoke;
+}
+
+.navbar {
+    background-color:#5BC3EB;
 }
