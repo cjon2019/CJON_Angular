@@ -30,20 +30,15 @@ import { DisplayComponent } from './components/jobs-list/display/display.compone
 import { HeaderComponent } from './components/jobs-list/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
-
-
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  { 
-    path: 'jobs-list', canActivate: [AuthGuard] , children: [
+  { path: 'jobs-list', canActivate: [AuthGuard] , children: [
       { path: '', component: JobsIndexComponent },
       { path: 'display', component: DisplayComponent },
       { path: 'finances', component: FinancesComponent },
       { path: 'header', component: HeaderComponent },
-      { path: 'footer', component: FooterComponent },
-      { path: 'summary', component: SummaryComponent },
-      { path: 'about', component: AboutComponent }
+      { path: 'summary', component: SummaryComponent }
     ]
   },
   { path: '**', component: IndexComponent }
