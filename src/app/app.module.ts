@@ -18,24 +18,28 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobsService } from './services/jobs.service';
-import { JobsIndexComponent } from './components/jobs/jobs-index/jobs-index.component';
-import { JobsDetailComponent } from './components/jobs/jobs-detail/jobs-detail.component';
+import { JobsIndexComponent } from './components/jobs-list/jobs-index/jobs-index.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IndexComponent } from './components/index/index.component';
-import { SummaryComponent } from './components/jobs/summary/summary.component';
-import { FinancesComponent } from './components/jobs/finances/finances.component';
+import { SummaryComponent } from './components/jobs-list/summary/summary.component';
+import { FinancesComponent } from './components/jobs-list/finances/finances.component';
 import { AboutComponent } from './components/footer/about/about.component';
 import { UserComponent } from './components/user/user.component';
-import { JobsListComponent } from './components/jobs/jobs-list/jobs-list.component';
-import { DisplayComponent } from './components/jobs/jobs-list/display/display.component';
+import { JobsListComponent } from './components/jobs-list/jobs-list.component';
+import { DisplayComponent } from './components/jobs-list/display/display.component';
+import { HeaderComponent } from './components/jobs-list/header/header.component';
+
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { 
-    path: 'jobs', canActivate: [AuthGuard] , children: [
+    path: 'jobs-list', canActivate: [AuthGuard] , children: [
       { path: '', component: JobsIndexComponent },
-      { path: 'detail/:id', component: JobsDetailComponent },
+      { path: 'display', component: DisplayComponent },
+      { path: 'finances', component: FinancesComponent },
+      { path: 'header', component: HeaderComponent },
+      { path: 'summary', components: SummaryComponent }
     ]
   },
   { path: '**', component: IndexComponent }
@@ -48,7 +52,6 @@ const routes = [
     RegistrationComponent,
     NavbarComponent,
     JobsIndexComponent,
-    JobsDetailComponent,
     IndexComponent,
     SummaryComponent,
     FinancesComponent,
