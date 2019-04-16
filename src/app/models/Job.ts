@@ -6,6 +6,7 @@ export interface Job {
     PositionStartDate: Date;
     PositionEndDate: Date;
     JobSummary: Text;
+    TotalOpenings: number;
     MinimumRange: number;
     MaximumRange: number;
     RateIntervalCode: string;

@@ -22,7 +22,8 @@ import { JobsIndexComponent } from './components/jobs/jobs-index/jobs-index.comp
 import { JobsDetailComponent } from './components/jobs/jobs-detail/jobs-detail.component';
 import { AuthGuard } from './guards/auth.guard';
 import { IndexComponent } from './components/index/index.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { SummaryComponent } from './components/jobs/summary/summary.component';
+import { FinancesComponent } from './components/jobs/finances/finances.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -45,7 +46,8 @@ const routes = [
     JobsIndexComponent,
     JobsDetailComponent,
     IndexComponent,
-    FooterComponent,
+    SummaryComponent,
+    FinancesComponent,
   ],
   imports: [
     BrowserModule,
