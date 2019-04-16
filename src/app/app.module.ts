@@ -24,6 +24,10 @@ import { AuthGuard } from './guards/auth.guard';
 import { IndexComponent } from './components/index/index.component';
 import { SummaryComponent } from './components/jobs/summary/summary.component';
 import { FinancesComponent } from './components/jobs/finances/finances.component';
+import { AboutComponent } from './components/footer/about/about.component';
+import { UserComponent } from './components/user/user.component';
+import { JobsListComponent } from './components/jobs/jobs-list/jobs-list.component';
+import { DisplayComponent } from './components/jobs/jobs-list/display/display.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -48,6 +52,10 @@ const routes = [
     IndexComponent,
     SummaryComponent,
     FinancesComponent,
+    AboutComponent,
+    UserComponent,
+    JobsListComponent,
+    DisplayComponent,
   ],
   imports: [
     BrowserModule,
