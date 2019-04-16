@@ -28,6 +28,8 @@ import { UserComponent } from './components/user/user.component';
 import { JobsListComponent } from './components/jobs-list/jobs-list.component';
 import { DisplayComponent } from './components/jobs-list/display/display.component';
 import { HeaderComponent } from './components/jobs-list/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 
 const routes = [
@@ -39,10 +41,13 @@ const routes = [
       { path: 'display', component: DisplayComponent },
       { path: 'finances', component: FinancesComponent },
       { path: 'header', component: HeaderComponent },
-      { path: 'summary', components: SummaryComponent }
+      { path: 'footer', component: FooterComponent },
+      { path: 'summary', component: SummaryComponent },
+      { path: 'about', component: AboutComponent }
     ]
   },
   { path: '**', component: IndexComponent }
+
 ];
 
 @NgModule({
@@ -59,6 +64,8 @@ const routes = [
     UserComponent,
     JobsListComponent,
     DisplayComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
