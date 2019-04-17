@@ -13,14 +13,14 @@
     <h3>Where is your dream location?</h3>
     <br>
     <div class="form-row">
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-8">
         <mat-form-field class = "full-width">
           <label for="inputCity">City</label>
           <input matInput type="text" class="form-control" formControlName="city" />
         </mat-form-field>
       </div>
       <div class="form-group col-md-4">
-        <mat-form-field>
+        <mat-form-field id = stateField class = "full-width">
           <label for="inputState">State</label>
           <select matNativeControl required class="form-control" name="state" formControlName="state">
           <option selected>Choose...</option>
@@ -77,12 +77,6 @@
           <option value="WV">West Virginia</option>
           <option value="WY">Wyoming</option>
           </select>
-        </mat-form-field>
-      </div>
-      <div class="form-group col-md-2">
-        <mat-form-field class = "full-width">
-          <label for="inputZip">Zip</label>
-          <input matInput type="text" class="form-control" formControlName="zip_code"/>
         </mat-form-field>
       </div>
     </div>
