@@ -1,3 +1,59 @@
-<p>
-  jobs-index works!
-</p>
+<h1>Index</h1>
+
+<div>
+  <mat-table #table [dataSource]="dataSource">
+    <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+
+    <ng-container matColumnDef="MatchedObjectId">
+      <mat-header-cell *matHeaderCellDef> MatchedObjectId # </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.MatchedObjectId}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="PositionTitle">
+      <mat-header-cell *matHeaderCellDef> PositionTitle </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionTitle}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="PositionLocation">
+      <mat-header-cell *matHeaderCellDef> PositionLocation </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionLocation}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="PositionStartDate">
+      <mat-header-cell *matHeaderCellDef> PositionStartDate </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionStartDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="PositionEndDate">
+      <mat-header-cell *matHeaderCellDef> PositionEndDate </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionEndDate}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="JobSummary">
+      <mat-header-cell *matHeaderCellDef> JobSummary </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.JobSummary}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="TotalOpenings">
+      <mat-header-cell *matHeaderCellDef> TotalOpenings </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.TotalOpenings}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="MinimumRange">
+      <mat-header-cell *matHeaderCellDef> MinimumRange</mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.MinimumRange}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="MaximumRange">
+      <mat-header-cell *matHeaderCellDef> MaximumRange </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.MaximumRange}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="RateIntervalCode">
+      <mat-header-cell *matHeaderCellDef> RateIntervalCode </mat-header-cell>
+      <mat-cell *matCellDef="let job"> {{job.RateIntervalCode}} </mat-cell>
+    </ng-container>
+
+  </mat-table>
+</div>
