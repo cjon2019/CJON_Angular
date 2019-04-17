@@ -5,54 +5,54 @@
     <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
     <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="MatchedObjectId">
       <mat-header-cell *matHeaderCellDef> MatchedObjectId # </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.MatchedObjectId}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.MatchedObjectId}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="PositionTitle">
       <mat-header-cell *matHeaderCellDef> PositionTitle </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.PositionTitle}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionTitle}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="PositionLocation">
       <mat-header-cell *matHeaderCellDef> PositionLocation </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.PositionLocation}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionLocation}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="PositionStartDate">
       <mat-header-cell *matHeaderCellDef> PositionStartDate </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.PositionStartDate}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionStartDate}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="Title">
+    <ng-container matColumnDef="PositionEndDate">
       <mat-header-cell *matHeaderCellDef> PositionEndDate </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.PositionEndDate}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.PositionEndDate}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="CreatedUtc">
+    <ng-container matColumnDef="JobSummary">
       <mat-header-cell *matHeaderCellDef> JobSummary </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.JobSummary}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.JobSummary}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="TotalOpenings">
       <mat-header-cell *matHeaderCellDef> TotalOpenings </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.TotalOpenings}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.TotalOpenings}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="MinimumRange">
       <mat-header-cell *matHeaderCellDef> MinimumRange</mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.MinimumRange}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.MinimumRange}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="MaximumRange">
       <mat-header-cell *matHeaderCellDef> MaximumRange </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.MaximumRange}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.MaximumRange}} </mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="NoteId">
+    <ng-container matColumnDef="RateIntervalCode">
       <mat-header-cell *matHeaderCellDef> RateIntervalCode </mat-header-cell>
-      <mat-cell *matCellDef="let note"> {{job.RateIntervalCode}} </mat-cell>
+      <mat-cell *matCellDef="let job"> {{job.RateIntervalCode}} </mat-cell>
     </ng-container>
 
   </mat-table>
