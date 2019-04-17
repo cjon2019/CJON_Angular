@@ -1,0 +1,23 @@
+.registerForm {
+    display: grid;
+    justify-content: center;
+}
+
+.jumbotron-container {
+    display: flex;
+    justify-content: center;
+}
+
+h1,h4 {
+    display: grid;
+    justify-content: center
+
+}
+
+.jumbotron {
+    width: 45%;
+    border-style: solid;
+    border-radius: 2mm;
+    border-color: #EF8354
+}
+
