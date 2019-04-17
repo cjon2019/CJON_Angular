@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private _form: FormBuilder, private authService: AuthService) {
     // creates the form
     this.createForm();
-   }
+  }
 
   ngOnInit() {
   }
@@ -33,5 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     // User is now set to be logged in
     this.authService.login(this.loginForm.value);
+
+
   }
 }
