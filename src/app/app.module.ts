@@ -4,11 +4,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-import { 
-  MatToolbarModule, 
+import {
+  MatToolbarModule,
   MatButtonModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatTableModule
 } from '@angular/material';
 
 import { AuthService } from './services/auth.service';
@@ -41,9 +42,9 @@ const routes = [
       { path: 'header', component: HeaderComponent },
       { path: 'summary', component: SummaryComponent },
     ],
-  },  
+  },
   {
-   path: 'about', children: [
+    path: 'about', children: [
       { path: '', component: AboutComponent },
     ],
   },
@@ -78,7 +79,8 @@ const routes = [
     MatToolbarModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   providers: [
     AuthService,
