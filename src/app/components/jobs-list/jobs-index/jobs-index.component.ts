@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material';
 export class JobsIndexComponent implements OnInit {
 
   // Table names of the Jobs table
-  columnNames = [];
+  columnNames = ['MatchedObjectId', 'PositionTitle', 'PositionLocation', 'PositionStartDate', 'PositionEndDate', 'JobSummary', 'TotalOpenings', 'MinimumRange', 'MaximumRange', 'RateIntervalCode'];
   // the source of the data in the Table
   dataSource: MatTableDataSource<Job>
 

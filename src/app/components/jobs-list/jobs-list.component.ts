@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Job } from 'src/app/models/Job';
 
 @Component({
   selector: 'app-jobs-list',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./jobs-list.component.css']
 })
 export class JobsListComponent implements OnInit {
+
+  job: Job;
 
   constructor() { }
 
