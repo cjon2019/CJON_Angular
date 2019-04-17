@@ -15,8 +15,7 @@ export class IndexComponent implements OnInit {
     this.myForm = this.fb.group({
       jobPosition: '',
       city: '',
-      state: '',
-      zip_code: ''
+      state: ''
     })
 
     this.myForm.valueChanges.subscribe(console.log)
@@ -24,10 +23,11 @@ export class IndexComponent implements OnInit {
 
   searchButtonClick(){
     var jobPosition = this.myForm.value['jobPosition'];
+    var city = this.myForm.value['city'];
+    var state = this.myForm.value['state'];
     console.log(jobPosition);
-    console.log(this.myForm.value['city']);
-    console.log(this.myForm.value['state']);
-    console.log(this.myForm.value['zip_code']);
+    console.log(city);
+    console.log(state);
   }
 
 }
