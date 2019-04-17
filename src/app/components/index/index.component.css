@@ -11,3 +11,9 @@ mat-form-field input{
 #stateField{
     margin-top: 13px;
 }
+
+.jumbotron {
+    border-style: solid;
+    border-radius: 2mm;
+    border-color: #EF8354
+}

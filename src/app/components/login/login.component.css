@@ -1,1 +1,28 @@
 
+.loginForm {
+    display: grid;
+    justify-content: center;
+    margin-top: 10%;
+}
+ 
+a {
+    display: grid;
+    justify-content: center;
+}
+
+h1,h4 {
+    display: grid;
+    justify-content: center;
+}
+
+.jumbotron-container {
+    display: flex;
+    justify-content: center;
+}
+
+.jumbotron {
+    width: 50%;
+    border-style: solid;
+    border-radius: 2mm;
+    border-color: #EF8354
+}
