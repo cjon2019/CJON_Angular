@@ -9,7 +9,12 @@ import {
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatTableModule
+  MatTableModule,
+  MatCardModule,
+  MatSidenavModule,
+  MatListModule,
+  MatIconModule,
+  MatPaginatorModule,
 } from '@angular/material';
 
 import { AuthService } from './services/auth.service';
@@ -31,11 +36,13 @@ import { DisplayComponent } from './components/jobs-list/display/display.compone
 import { HeaderComponent } from './components/jobs-list/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
+
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'jobs-list', canActivate: [AuthGuard], children: [
+      { path: '', component: JobsListComponent},
       { path: '', component: JobsIndexComponent },
       { path: 'display', component: DisplayComponent },
       { path: 'finances', component: FinancesComponent },
@@ -67,7 +74,7 @@ const routes = [
     JobsListComponent,
     DisplayComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +87,12 @@ const routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatPaginatorModule,
   ],
   providers: [
     AuthService,
