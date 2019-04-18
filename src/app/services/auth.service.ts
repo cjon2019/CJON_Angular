@@ -45,6 +45,16 @@ export class AuthService {
     return this._http.get(`${Api_Url}/api/v1/users`, { headers: authHeader });
   }
 
+  loggedInCheck() {
+    if (localStorage.getItem('id_token')) {
+      this.isLoggedIn.next(true);
+      return true;
+    } else {
+      this.isLoggedIn.next(false);
+      return false;
+    }
+  }
+
   private setHeader(): HttpHeaders {
     return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
   }
