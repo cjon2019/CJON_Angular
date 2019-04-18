@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
   // Forms and Services needed for the creation of the Register Page.
-  constructor(private _form: FormBuilder, private authService: AuthService, private _router: Router) {
+  constructor(private _form: FormBuilder, private _authService: AuthService, private _router: Router) {
     // creates the form
     this.createForm();
   }
@@ -34,8 +34,9 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     // User is now set to be logged in
-    this.authService.login(this.loginForm.value);
-    this._router.navigate(['/home']);
+    console.log(this.loginForm.value);
+    this._authService.login(this.loginForm.value);
+    this._authService.currentUser();
 
 
   }
