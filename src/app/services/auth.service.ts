@@ -18,7 +18,7 @@ export class AuthService {
   constructor(private _http: HttpClient, private _router: Router) { }
 
   register(regUserData: RegisterUser) {
-    return this._http.post(`${Api_Url}/api/v1/users`, regUserData);
+    return this._http.post(`${Api_Url}/api/v1/users/`, regUserData);
   }
 
   login(loginInfo: LoginType) {
@@ -42,7 +42,7 @@ export class AuthService {
 
     const authHeader = new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
 
-    return this._http.get(`${Api_Url}/api/v1/users`, { headers: authHeader });
+    return this._http.get(`${Api_Url}/api/v1/users/`, { headers: authHeader });
   }
 
   loggedInCheck() {

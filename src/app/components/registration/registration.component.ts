@@ -32,12 +32,12 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
+
   onSubmit() {
     // Registers the user into the database, Adds in authService permissions to the newly created user.
     console.log(this._registerForm.value);
     this._authService
-      .register(this._registerForm.value)
-      .subscribe( () => this._authService.login(this._registerForm.value));
+      .register(this._registerForm.value).subscribe(val => console.log(val));
   }
 
 }
