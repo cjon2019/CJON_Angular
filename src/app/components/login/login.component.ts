@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     // User is now set to be logged in
+    console.log(this.loginForm.value);
     this._authService.login(this.loginForm.value);
     this._authService.currentUser();
 
