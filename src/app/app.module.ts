@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import {
   MatToolbarModule,
@@ -30,6 +30,7 @@ import { JobsListComponent } from './components/jobs-list/jobs-list.component';
 import { DisplayComponent } from './components/jobs-list/display/display.component';
 import { HeaderComponent } from './components/jobs-list/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -67,7 +68,8 @@ const routes = [
     JobsListComponent,
     DisplayComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
