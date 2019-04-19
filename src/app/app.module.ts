@@ -1,11 +1,9 @@
-//imports for angular functionality
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-//tools used to create angular layouts in html
+
 import {
   MatToolbarModule,
   MatButtonModule,
@@ -13,28 +11,26 @@ import {
   MatInputModule,
   MatTableModule
 } from '@angular/material';
-//services, guards, and components related to users
-import { AuthGuard } from './guards/auth.guard';
+
 import { AuthService } from './services/auth.service';
-import { JobsService } from './services/jobs.service';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { LoginComponent } from './components/login/login.component';
-//base level components
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { UserComponent } from './components/user/user.component';
-import { IndexComponent } from './components/index/index.component';
-//job list components and other components within the jobs list
-import { JobsListComponent } from './components/jobs-list/jobs-list.component';
+import { JobsService } from './services/jobs.service';
 import { JobsIndexComponent } from './components/jobs-list/jobs-index/jobs-index.component';
+import { AuthGuard } from './guards/auth.guard';
+import { IndexComponent } from './components/index/index.component';
 import { SummaryComponent } from './components/jobs-list/summary/summary.component';
 import { FinancesComponent } from './components/jobs-list/finances/finances.component';
+import { AboutComponent } from './components/footer/about/about.component';
+import { UserComponent } from './components/user/user.component';
+import { JobsListComponent } from './components/jobs-list/jobs-list.component';
 import { DisplayComponent } from './components/jobs-list/display/display.component';
 import { HeaderComponent } from './components/jobs-list/header/header.component';
-//footer component and all other items inside of the footer
 import { FooterComponent } from './components/footer/footer.component';
-import { AboutComponent } from './components/footer/about/about.component';
-// routes for how angular reaches endpoints
+
 const routes = [
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
