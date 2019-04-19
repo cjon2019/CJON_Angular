@@ -31,6 +31,9 @@ import { DisplayComponent } from './components/jobs-list/display/display.compone
 import { HeaderComponent } from './components/jobs-list/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
+import { UserService } from './services/user.service';
+import { JwtInterceptor } from './components/helpers/jwt.interceptor';
+import { ErrorInterceptor } from './components/helpers/error.interceptor';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -86,7 +89,10 @@ const routes = [
   ],
   providers: [
     AuthService,
-    JobsService
+    JobsService,
+    UserService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

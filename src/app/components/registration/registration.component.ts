@@ -8,7 +8,11 @@ import { UserService } from 'src/app/services/user.service';
 import { AuthService } from 'src/app/services/auth.service';
 
 
-@Component({ templateUrl: 'register.component.html' })
+@Component({
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css']
+})
 export class RegistrationComponent implements OnInit {
   registerForm: FormGroup;
   loading = false;
@@ -31,6 +35,7 @@ export class RegistrationComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
+      email: ['', Validators.required],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
