@@ -34,6 +34,7 @@ import { AlertComponent } from './components/alert/alert.component';
 import { UserService } from './services/user.service';
 import { JwtInterceptor } from './components/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './components/helpers/error.interceptor';
+import { AlertService } from './services/alert.service';
 
 const routes = [
   { path: 'register', component: RegistrationComponent },
@@ -91,6 +92,7 @@ const routes = [
     AuthService,
     JobsService,
     UserService,
+    AlertService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
