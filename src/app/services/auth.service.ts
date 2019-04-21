@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/User';
@@ -22,8 +22,13 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  private getHeaders(): HttpHeaders {
+    return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
+  }
+
+
   login(username: string, password: string) {
-    return this.http.post<any>(`${Api_Url}/users/authenticate`, { username, password })
+    return this.http.post<any>(`${Api_Url}/users/login`, { username, password }, { headers: this.getHeaders() })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {

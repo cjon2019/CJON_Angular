@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
@@ -13,14 +14,16 @@ import {
 } from '@angular/material';
 
 import { AuthService } from './services/auth.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AlertService } from './services/alert.service';
+import { UserService } from './services/user.service';
+import { JobsService } from './services/jobs.service';
+import { AuthGuard } from './guards/auth.guard';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { JobsService } from './services/jobs.service';
 import { JobsIndexComponent } from './components/jobs-list/jobs-index/jobs-index.component';
-import { AuthGuard } from './guards/auth.guard';
 import { IndexComponent } from './components/index/index.component';
 import { SummaryComponent } from './components/jobs-list/summary/summary.component';
 import { FinancesComponent } from './components/jobs-list/finances/finances.component';
@@ -31,13 +34,12 @@ import { DisplayComponent } from './components/jobs-list/display/display.compone
 import { HeaderComponent } from './components/jobs-list/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
-import { UserService } from './services/user.service';
+
 import { JwtInterceptor } from './components/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './components/helpers/error.interceptor';
-import { AlertService } from './services/alert.service';
 
 const routes = [
-  { path: 'register', component: RegistrationComponent },
+  { path: 'users', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   {
     path: 'jobs-list', canActivate: [AuthGuard], children: [

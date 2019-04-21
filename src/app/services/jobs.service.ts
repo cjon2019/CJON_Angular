@@ -22,8 +22,6 @@ export class JobsService {
   }
 
   // getJob's parameters of id are what the specific json values for identification are.
-
-
   getJob(MatchedObjectId: number) {
     return this._http.post(`${Api_Url}/Jobs/${MatchedObjectId}`, { headers: this.getHeaders() });
   }

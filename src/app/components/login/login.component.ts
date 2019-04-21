@@ -12,54 +12,55 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
   loading = false;
   submitted = false;
   returnUrl: string;
 
+  private _loginForm: FormGroup;
+
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authService: AuthService,
-    private alertService: AlertService
+    private _formBuilder: FormBuilder,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _authService: AuthService,
+    private _alertService: AlertService
   ) {
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+    if (this._authService.currentUserValue) {
+      this._router.navigate(['/']);
     }
   }
 
   ngOnInit() {
-    this.loginForm = this.formBuilder.group({
+    this._loginForm = this._formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
+  get f() { return this._loginForm.controls; }
 
   onSubmit() {
     this.submitted = true;
 
     // stop here if form is invalid
-    if (this.loginForm.invalid) {
+    if (this._loginForm.invalid) {
       return;
     }
 
     this.loading = true;
-    this.authService.login(this.f.email.value, this.f.password.value)
+    this._authService.login(this.f.email.value, this.f.password.value)
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this._router.navigate([this.returnUrl]);
         },
         error => {
-          this.alertService.error(error);
+          this._alertService.error(error);
           this.loading = false;
         });
   }

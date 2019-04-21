@@ -14,54 +14,56 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
-  registerForm: FormGroup;
   loading = false;
   submitted = false;
 
+  private _registerForm: FormGroup;
+
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private authService: AuthService,
-    private userService: UserService,
-    private alertService: AlertService
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    private _authService: AuthService,
+    private _userService: UserService,
+    private _alertService: AlertService
   ) {
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+    if (this._authService.currentUserValue) {
+      this._router.navigate(['/']);
     }
   }
 
   ngOnInit() {
-    this.registerForm = this.formBuilder.group({
+    this._registerForm = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       email: ['', Validators.required],
-      username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
   // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+  get f() { return this._registerForm.controls; }
 
   onSubmit() {
     this.submitted = true;
+    console.log(this._registerForm.value);
 
     // stop here if form is invalid
-    if (this.registerForm.invalid) {
+    if (this._registerForm.invalid) {
+      console.log('Failed')
       return;
     }
 
     this.loading = true;
-    this.userService.register(this.registerForm.value)
+    this._userService.register(this._registerForm.value)
       .pipe(first())
       .subscribe(
         data => {
-          this.alertService.success('Registration successful', true);
-          this.router.navigate(['/login']);
+          this._alertService.success('Registration successful', true);
+          this._router.navigate(['/login']);
         },
         error => {
-          this.alertService.error(error);
+          this._alertService.error(error);
           this.loading = false;
         });
   }
