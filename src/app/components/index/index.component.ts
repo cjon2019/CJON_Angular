@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JobsService } from 'src/app/services/jobs.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
-const Api_Url = 'https://cjon-red-badge-project.herokuapp.com/api/v1';
+const Api_Url = 'https://cjon-red-badge-project.herokuapp.com';
 
 
 @Component({
@@ -45,7 +45,7 @@ export class IndexComponent implements OnInit {
     console.log(city);
     console.log(state);
     console.log('button pressed');
-    return this._http.get(`${Api_Url}/jobs/`, { headers: this.getHeaders() });
+    return this._http.get(`${Api_Url}/jobs`, { headers: this.getHeaders() });
   }
 
   private getHeaders() {

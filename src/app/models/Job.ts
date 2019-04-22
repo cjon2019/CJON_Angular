@@ -2,10 +2,10 @@
 export interface Job {
     MatchedObjectId: number;
     PositionTitle: string;
-    PositionLocation: object;
+    PositionLocation: string;
     PositionStartDate: Date;
     PositionEndDate: Date;
-    JobSummary: Text;
+    JobSummary: string;
     TotalOpenings: number;
     MinimumRange: number;
     MaximumRange: number;

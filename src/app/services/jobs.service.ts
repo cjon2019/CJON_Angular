@@ -14,7 +14,7 @@ export class JobsService {
   constructor(private _http: HttpClient) { }
 
   getJobs() {
-    return this._http.get(`${Api_Url}/Jobs`, { headers: this.getHeaders() });
+    return this._http.get(`${Api_Url}/jobs`, { headers: this.getHeaders() });
   }
 
   private getHeaders() {
