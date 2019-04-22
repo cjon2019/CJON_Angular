@@ -11,7 +11,7 @@ export class UserService {
   constructor(private _http: HttpClient) { }
 
   getAll() {
-    return this._http.get<User[]>(`${Api_Url}/users`, { headers: this.getHeaders() });
+    return this._http.get<User[]>(`${Api_Url}/users/`, { headers: this.getHeaders() });
   }
 
   getById(id: number) {
@@ -23,7 +23,7 @@ export class UserService {
   }
 
   register(user: User) {
-    return this._http.post(`${Api_Url}/api/v1/users`, user, { headers: this.getHeaders() });
+    return this._http.post(`${Api_Url}/api/v1/users/`, user, { headers: this.getHeaders() });
   }
 
   update(user: User) {
