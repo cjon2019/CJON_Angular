@@ -1,9 +1,9 @@
 <div class="jumbotron">
   <h2>Index Component</h2>
   <hr />
-  <form action="#" class="JobSearchForm" [formGroup]="myForm">
+  <form action="#" class="JobSearchForm" [formGroup]="_jobSearchForm">
     <h3>What are you looking for?</h3>
-    <p>Value: {{ myForm.value | json }}</p>
+    <p>Value: {{ _jobSearchForm.value | json }}</p>
     <mat-form-field class = "full-width">
       <label for="inputState">Job Position</label>
       <input matInput type="text" class="form-control" formControlName="jobPosition"/>

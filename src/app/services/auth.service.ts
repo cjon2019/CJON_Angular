@@ -31,12 +31,18 @@ export class AuthService {
     return this._http.post<any>(`${Api_Url}/api/v1/users/login`, { email, password }, { headers: this.getHeaders() })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
+        console.log('this is my user object' + user.first_name)
         if (user && user.token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes
           localStorage.setItem('currentUser', JSON.stringify(user));
+          console.log('Current User')
+          console.log(this.currentUser)
           this.currentUserSubject.next(user);
+        } else {
+          console.log('missed if statement')
         }
 
+        //console.log(user);
         return user;
       }));
   }

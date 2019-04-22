@@ -28,6 +28,7 @@ export class UserComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loadAllUsers();
+    console.log(this.currentUser)
   }
 
   ngOnDestroy() {
