@@ -39,6 +39,7 @@ import { JwtInterceptor } from './components/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './components/helpers/error.interceptor';
 
 const routes = [
+  { path: 'test', component: UserComponent },
   { path: 'users', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   {

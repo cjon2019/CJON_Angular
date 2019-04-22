@@ -19,11 +19,11 @@ export class UserService {
   }
 
   private getHeaders() {
-    return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
+    return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 
   register(user: User) {
-    return this._http.post(`${Api_Url}/users`, user, { headers: this.getHeaders() });
+    return this._http.post(`${Api_Url}/api/v1/users`, user, { headers: this.getHeaders() });
   }
 
   update(user: User) {

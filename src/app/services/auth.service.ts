@@ -13,7 +13,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private http: HttpClient) {
+  constructor(private _http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -23,12 +23,12 @@ export class AuthService {
   }
 
   private getHeaders(): HttpHeaders {
-    return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
+    return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 
 
-  login(username: string, password: string) {
-    return this.http.post<any>(`${Api_Url}/users/login`, { username, password }, { headers: this.getHeaders() })
+  login(email: string, password: string) {
+    return this._http.post<any>(`${Api_Url}/api/v1/users/login`, { email, password }, { headers: this.getHeaders() })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         if (user && user.token) {

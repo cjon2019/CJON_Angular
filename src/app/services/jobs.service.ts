@@ -18,7 +18,7 @@ export class JobsService {
   }
 
   private getHeaders() {
-    return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
+    return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 
   // getJob's parameters of id are what the specific json values for identification are.
