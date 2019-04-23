@@ -25,13 +25,9 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { JobsIndexComponent } from './components/jobs-list/jobs-index/jobs-index.component';
 import { IndexComponent } from './components/index/index.component';
-import { SummaryComponent } from './components/jobs-list/summary/summary.component';
-import { FinancesComponent } from './components/jobs-list/finances/finances.component';
 import { AboutComponent } from './components/footer/about/about.component';
 import { UserComponent } from './components/user/user.component';
 import { JobsListComponent } from './components/jobs-list/jobs-list.component';
-import { DisplayComponent } from './components/jobs-list/display/display.component';
-import { HeaderComponent } from './components/jobs-list/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { AlertComponent } from './components/alert/alert.component';
 
@@ -43,12 +39,8 @@ const routes = [
   { path: 'users', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'jobs', canActivate: [AuthGuard], children: [
+    path: 'jobs', component: JobsListComponent, canActivate: [AuthGuard], children: [
       { path: '', component: JobsIndexComponent },
-      { path: 'display', component: DisplayComponent },
-      { path: 'finances', component: FinancesComponent },
-      { path: 'header', component: HeaderComponent },
-      { path: 'summary', component: SummaryComponent },
     ],
   },
   {
@@ -68,13 +60,9 @@ const routes = [
     NavbarComponent,
     JobsIndexComponent,
     IndexComponent,
-    SummaryComponent,
-    FinancesComponent,
     AboutComponent,
     UserComponent,
     JobsListComponent,
-    DisplayComponent,
-    HeaderComponent,
     FooterComponent,
     AlertComponent
   ],

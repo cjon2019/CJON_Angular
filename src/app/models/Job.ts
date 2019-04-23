@@ -1,13 +1,12 @@
 //Table Values of a Job
 export interface Job {
-    MatchedObjectId: number;
-    PositionTitle: string;
-    PositionLocation: object;
-    PositionStartDate: Date;
-    PositionEndDate: Date;
-    JobSummary: Text;
-    TotalOpenings: number;
-    MinimumRange: number;
-    MaximumRange: number;
-    RateIntervalCode: string;
+    matched_object_id: number;
+    position_title: string;
+    position_location: string;
+    position_start_date: Date;
+    position_end_date: Date;
+    job_summary: string;
+    min_range: number;
+    max_range: number;
+    rate_interval_code: string;
 }

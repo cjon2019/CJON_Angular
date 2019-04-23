@@ -2,8 +2,8 @@
 <p>You're logged in with Angular 7!!</p>
 <h3>All registered users:</h3>
 <ul>
-    <li *ngFor="let user of users">
-        {{user.email}} ({{user.first_name}} {{user.last_name}})
+    <li *ngIf="currentUser">
+        {{currentUser.email}} ({{currentUser.first_name}} {{currentUser.last_name}})
         - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
     </li>
 </ul>
