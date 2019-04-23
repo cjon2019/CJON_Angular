@@ -38,6 +38,10 @@ export class JobsService {
     return this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() });
   }
 
+  getJobsByStateAndPositionTEST(state: string, position_title: string): Observable<any> {
+    return this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() });
+  }
+
   test(state: string, position_title: string) {
     return this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() })
       .pipe(map(job => {
