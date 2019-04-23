@@ -10,14 +10,21 @@ import { Subscription } from 'rxjs';
 })
 export class JobsListComponent implements OnInit {
 
-  job: Job;
   jobSubscription: Subscription;
   jobs: Job[] = [];
 
-  constructor() {
+  constructor(private _jobService: JobsService) {
   }
 
   ngOnInit() {
+    this.jobSubscription = this._jobService.jobsList.subscribe(val => {
+      if (val.results) {
+        this.jobs = [];
+      } else {
+        this.jobs = val['SearchResult']['SearchResultItems'];
+      }
+      console.log(this.jobs);
+    })
   }
 
 }

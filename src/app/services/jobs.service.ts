@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Job } from '../models/Job';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-const Api_Url = 'https://cjon-red-badge-project.herokuapp.com';
+
+const Api_Url = 'https://cjon-red-badge-project.herokuapp.com/api/v1';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +13,12 @@ export class JobsService {
 
   private jobSubject: BehaviorSubject<Job>;
   public job: Observable<Job>;
+  public jobsList = new BehaviorSubject<any>({ results: "none" });
 
   constructor(private _http: HttpClient) {
     this.jobSubject = new BehaviorSubject<Job>(JSON.parse(localStorage.getItem('job'))); //UNSURE ABOUT THIS
     this.job = this.jobSubject.asObservable();
+
   }
 
   private getHeaders() {
@@ -38,12 +41,18 @@ export class JobsService {
     return this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() });
   }
 
-  getJobsByStateAndPositionTEST(state: string, position_title: string): Observable<any> {
-    return this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() });
+  getJobsByStateAndPositionTEST(state: string, position_title: string, cb: Function): void {
+    this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() })
+      .subscribe(value => {
+        console.log(value);
+        this.jobsList.next(value);
+        cb();
+      });
+
   }
 
   test(state: string, position_title: string) {
-    return this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() })
+    return this._http.get(`${Api_Url}/jobs/test`, { headers: this.getHeaders() })
       .pipe(map(job => {
         console.log('Printing Data: ' + job);
         localStorage.setItem('job', JSON.stringify(job));
