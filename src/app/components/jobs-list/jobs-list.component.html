@@ -1,19 +1,37 @@
 <!-- <app-jobs-index></app-jobs-index> -->
 <h1>Jobs Results Page </h1>
-<p>Data = {{ jobs.position_title }}</p>
+
+<div *ngFor="let job of jobs">
+  <!-- Location Name -->
+  <p>
+    Matched Object Id: {{ job['MatchedObjectDescriptor']['PositionLocation'][0]['LocationName']}}
+    Position Title: {{ job.MatchedObjectDescriptor.PositionTitle }}
+    Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }}
+    Job Summary: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}
+    Salary Min Range: {{ job.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}}
+    Salary Max Range: {{ job['MatchedObjectDescriptor']['PositionRemuneration'][0]['MaximumRange']}}
+    Position Start Date: {{ job['MatchedObjectDescriptor']['PositionStartDate'] }}
+    Department: {{ job['MatchedObjectDescriptor']['DepartmentName']}}
+    Organization: {{ job['MatchedObjectDescriptor']['OrganizationName']}}
+
+  </p>
+  <p></p>
+  <div class="jobsTable">
+    <p class="rightAligned">Salary Range: Min ${{ job.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}} -
+      Max ${{ job['MatchedObjectDescriptor']['PositionRemuneration'][0]['MaximumRange']}}</p>
+    <h2>{{ job.MatchedObjectDescriptor.PositionTitle }}</h2>
+    <p><strong>Department : {{ job['MatchedObjectDescriptor']['DepartmentName']}}</strong></p>
+    <p><strong>Organization : </strong></p>
+    <br>
+    <p>Description: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}</p>
+    <p>Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }} </p>
+  </div>
+</div>
 
 
-    <!-- Start of Chai's Tables -->
-    <div class="jobsTable">
-        <p class="rightAligned">$ Salary</p>
-        <h2>Job Title</h2>
-        <p><strong>DepartmentName / Organization Name</strong></p>
-        <br>
-        <p>Description: Lorem Ipsum blasdsdfasf</p>
-        <p>Location: Indianapolis, IN</p>
-    </div>
 
-    <!--Joey Table-->
+<!-- 
+
     <div class="col-md10 col-sm-10">
         <div class="company-content">
             <h3>
@@ -36,4 +54,4 @@
         "Description"
         
     </div>        
-    </div>
+    </div> -->
