@@ -31,8 +31,6 @@ export class AuthService {
     return this._http.post<any>(`${Api_Url}/api/v1/users/login`, { email, password }, { headers: this.getHeaders() })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
-        console.log('this is my user first name' + user.first_name)
-        console.log('this is my user' + user)
         console.log('this is my user token' + user.jwt_token)
         if (user && user.jwt_token) {
           // store user details and jwt token in local storage to keep user logged in between page refreshes

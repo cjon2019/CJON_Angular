@@ -43,7 +43,7 @@ const routes = [
   { path: 'users', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   {
-    path: 'jobs', canActivate: [AuthGuard], children: [
+    path: 'jobs', component: JobsListComponent, canActivate: [AuthGuard], children: [
       { path: '', component: JobsIndexComponent },
       { path: 'display', component: DisplayComponent },
       { path: 'finances', component: FinancesComponent },

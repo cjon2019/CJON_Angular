@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { JobsService } from 'src/app/services/jobs.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
+import { first } from 'rxjs/operators';
+import { Job } from 'src/app/models/Job';
+import { Subscription } from 'rxjs';
 
 const Api_Url = 'https://cjon-red-badge-project.herokuapp.com';
 
@@ -16,6 +20,8 @@ export class IndexComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
+  job: Job;
+  jobSubscription: Subscription;
 
   private _jobSearchForm: FormGroup;
 
@@ -24,17 +30,46 @@ export class IndexComponent implements OnInit {
     private _http: HttpClient,
     private _route: ActivatedRoute,
     private _router: Router,
-    private _jobsService: JobsService
-  ) { }
+    private _jobsService: JobsService,
+    private _alertService: AlertService
+  ) {
+    this.jobSubscription = this._jobsService.job.subscribe(job => {
+      this.job = job;
+    });
+  }
 
   ngOnInit() {
     this._jobSearchForm = this._formBuilder.group({
-      jobPosition: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required]
+      position_title: ['', Validators.required],
+      position_location: ['', Validators.required]
     })
 
     this._jobSearchForm.valueChanges.subscribe(console.log)
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/jobs';
+  }
+
+  get f() { return this._jobSearchForm.controls; }
+
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this._jobSearchForm.invalid) {
+      return;
+    }
+
+    this.loading = true;
+    // this._jobsService.getJobsByStateAndPosition(this.f.position_location.value, this.f.position_title.value)
+    this._jobsService.test(this.f.position_location.value, this.f.position_title.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this._router.navigate([this.returnUrl]);
+        },
+        error => {
+          this._alertService.error(error);
+          this.loading = false;
+        });
   }
 
   searchButtonClick() {

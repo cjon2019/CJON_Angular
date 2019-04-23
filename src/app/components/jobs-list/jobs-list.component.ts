@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Job } from 'src/app/models/Job';
+import { JobsService } from 'src/app/services/jobs.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-jobs-list',
@@ -9,8 +11,11 @@ import { Job } from 'src/app/models/Job';
 export class JobsListComponent implements OnInit {
 
   job: Job;
+  jobSubscription: Subscription;
+  jobs: Job[] = [];
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
