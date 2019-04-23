@@ -33,6 +33,7 @@ import { AlertComponent } from './components/alert/alert.component';
 
 import { JwtInterceptor } from './components/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './components/helpers/error.interceptor';
+import { EditComponent } from './components/user/edit/edit.component';
 
 const routes = [
   { path: 'test', component: UserComponent },
@@ -64,7 +65,8 @@ const routes = [
     UserComponent,
     JobsListComponent,
     FooterComponent,
-    AlertComponent
+    AlertComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
