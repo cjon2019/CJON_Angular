@@ -1,8 +1,7 @@
 <!-- <app-jobs-index></app-jobs-index> -->
 <h1>Jobs Results Page </h1>
-
+<!--
 <div *ngFor="let job of jobs">
-  <!-- Location Name -->
   <p>
     Matched Object Id: {{ job.MatchedObjectId }}
     Position Title: {{ job.MatchedObjectDescriptor.PositionTitle }}
@@ -27,9 +26,46 @@
     <p>Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }} </p>
   </div>
 </div>
+-->
 
-<mat-paginator></mat-paginator>
+<div class="mat-elevation-z8 data-table">
+  <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
 
+    <!-- Id Column -->
+    <ng-container matColumnDef="matched_object_id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.matched_object_id}}</mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="position_title">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.position_title}}</mat-cell>
+    </ng-container>
+
+    <!-- Amount Column -->
+    <ng-container matColumnDef="position_location">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Location</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.position_location}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="min_range">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Min Salary</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.min_range}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="max_range">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Max Salary</mat-header-cell>
+      <mat-cell *matCellDef="let row">{{row.max_range}}</mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [pageIndex]="0" [pageSize]="10" [pageSizeOptions]="[25, 50, 100, 250]">
+  </mat-paginator>
+</div>
 
 
 <!-- 

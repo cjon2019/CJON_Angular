@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { JobsService } from 'src/app/services/jobs.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AlertService } from 'src/app/services/alert.service';
 import { Job } from 'src/app/models/Job';
 import { Subscription } from 'rxjs';
 

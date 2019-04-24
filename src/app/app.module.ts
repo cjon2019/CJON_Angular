@@ -4,14 +4,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 import {
   MatToolbarModule,
   MatButtonModule,
   MatFormFieldModule,
   MatInputModule,
-  MatTableModule
+  MatTableModule,
+  MatPaginatorModule,
+  MatSortModule
 } from '@angular/material';
 
 import { AuthService } from './services/auth.service';
@@ -35,17 +36,12 @@ import { AlertComponent } from './components/alert/alert.component';
 import { JwtInterceptor } from './components/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './components/helpers/error.interceptor';
 import { EditComponent } from './components/user/edit/edit.component';
-import { PaginatorComponent } from './components/jobs-list/paginator/paginator.component';
 
 const routes = [
   { path: 'test', component: UserComponent },
   { path: 'users', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
-  {
-    path: 'jobs', component: JobsListComponent, canActivate: [AuthGuard], children: [
-      { path: '', component: JobsIndexComponent },
-    ],
-  },
+  { path: 'jobs', component: JobsListComponent, canActivate: [AuthGuard] },
   {
     path: 'about', children: [
       { path: '', component: AboutComponent },
@@ -68,8 +64,7 @@ const routes = [
     JobsListComponent,
     FooterComponent,
     AlertComponent,
-    EditComponent,
-    PaginatorComponent
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -83,7 +78,8 @@ const routes = [
     MatFormFieldModule,
     MatInputModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   providers: [
     AuthService,
