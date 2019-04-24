@@ -17,7 +17,7 @@ export class JobsIndexComponent implements OnInit {
   dataSource: MatTableDataSource<Job>
 
   // Uses the service JobsService in any below functions needed to use its services
-  constructor(private _jobsService: JobsService) { }
+  constructor(public _jobsService: JobsService) { }
 
   ngOnInit() {
     // Gets all jobs in the job table and sets it to a datasource

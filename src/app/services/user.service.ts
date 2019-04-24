@@ -5,9 +5,9 @@ import { User } from '../models/User'
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  constructor(private _http: HttpClient) { }
+  constructor(public _http: HttpClient) { }
 
-  private getHeaders() {
+  public getHeaders() {
     return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 

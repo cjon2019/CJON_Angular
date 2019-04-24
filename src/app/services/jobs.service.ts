@@ -13,11 +13,11 @@ export class JobsService {
 
   public jobsList = new BehaviorSubject<any>({ results: "none" });
 
-  constructor(private _http: HttpClient) {
+  constructor(public _http: HttpClient) {
 
   }
 
-  private getHeaders() {
+  public getHeaders() {
     return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 

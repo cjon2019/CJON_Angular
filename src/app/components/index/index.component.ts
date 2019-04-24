@@ -19,13 +19,13 @@ export class IndexComponent implements OnInit {
   jobsList: any;
   jobSubscription: Subscription;
 
-  private _jobSearchForm: FormGroup;
+  public _jobSearchForm: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private _route: ActivatedRoute,
-    private _router: Router,
-    private _jobsService: JobsService,
+    public _formBuilder: FormBuilder,
+    public _route: ActivatedRoute,
+    public _router: Router,
+    public _jobsService: JobsService,
   ) { }
 
   ngOnInit() {

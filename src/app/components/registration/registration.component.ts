@@ -17,14 +17,14 @@ export class RegistrationComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  private _registerForm: FormGroup;
+  public _registerForm: FormGroup;
 
   constructor(
-    private _formBuilder: FormBuilder,
-    private _router: Router,
-    private _authService: AuthService,
-    private _userService: UserService,
-    private _alertService: AlertService
+    public _formBuilder: FormBuilder,
+    public _router: Router,
+    public _authService: AuthService,
+    public _userService: UserService,
+    public _alertService: AlertService
   ) {
     // redirect to home if already logged in
     if (this._authService.currentUserValue) {

@@ -21,7 +21,7 @@ export class JobsListComponent implements OnInit {
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
   displayedColumns = ['MatchedObjectId', 'PositionTitle', 'PositionLocation', 'MinimumRange', 'MaximumRange'];
 
-  constructor(private _jobService: JobsService) {
+  constructor(public _jobService: JobsService) {
   }
 
   ngOnInit() {

@@ -10,10 +10,10 @@ import { APIURL } from 'src/environments/environment.prod';
   providedIn: 'root'
 })
 export class AuthService {
-  private currentUserSubject: BehaviorSubject<User>;
+  public currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
 
-  constructor(private _http: HttpClient) {
+  constructor(public _http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
@@ -22,7 +22,7 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
-  private getHeaders(): HttpHeaders {
+  public getHeaders(): HttpHeaders {
     return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 

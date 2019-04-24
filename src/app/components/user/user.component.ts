@@ -18,9 +18,9 @@ export class UserComponent implements OnInit, OnDestroy {
   users: User[] = [];
 
   constructor(
-    private _authService: AuthService,
-    private _userService: UserService,
-    private _router: Router
+    public _authService: AuthService,
+    public _userService: UserService,
+    public _router: Router
   ) {
     this.currentUserSubscription = this._authService.currentUser.subscribe(user => {
       this.currentUser = user;

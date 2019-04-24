@@ -11,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   loggedIn: boolean;
 
-  constructor(private _authService: AuthService) { }
+  constructor(public _authService: AuthService) { }
 
   ngOnInit() {
     if (localStorage.getItem('api-token')) {
