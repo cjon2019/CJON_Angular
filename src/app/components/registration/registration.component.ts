@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { first } from 'rxjs/operators';
+
+import { AlertService } from 'src/app/services/alert.service';
+import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -8,36 +14,57 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  loading = false;
+  submitted = false;
 
-  // sets _registerForm to be a form
   private _registerForm: FormGroup;
 
-  // Forms and Services needed for the creation of the Register Page.
-  constructor(private _form: FormBuilder, private _authService: AuthService) {
-    // creates the form
-    this.createForm();
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    private _authService: AuthService,
+    private _userService: UserService,
+    private _alertService: AlertService
+  ) {
+    // redirect to home if already logged in
+    if (this._authService.currentUserValue) {
+      this._router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
-  }
-
-  createForm() {
-    // Each input field variable for the Register User Form
-    this._registerForm = this._form.group({
-      firstName: new FormControl,
-      lastName: new FormControl,
-      email: new FormControl,
-      password: new FormControl,
-      confirmPassword: new FormControl
+    this._registerForm = this._formBuilder.group({
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
+      email: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
   }
 
+  // convenience getter for easy access to form fields
+  get f() { return this._registerForm.controls; }
 
   onSubmit() {
-    // Registers the user into the database, Adds in authService permissions to the newly created user.
+    this.submitted = true;
     console.log(this._registerForm.value);
-    this._authService
-      .register(this._registerForm.value).subscribe(val => console.log(val));
-  }
 
+    // stop here if form is invalid
+    if (this._registerForm.invalid) {
+      console.log('Failed')
+      return;
+    }
+
+    this.loading = true;
+    this._userService.register(this._registerForm.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this._alertService.success('Registration successful', true);
+          this._router.navigate(['/login']);
+        },
+        error => {
+          this._alertService.error(error);
+          this.loading = false;
+        });
+  }
 }

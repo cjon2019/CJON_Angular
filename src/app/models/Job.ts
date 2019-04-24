@@ -2,12 +2,11 @@
 export interface Job {
     MatchedObjectId: number;
     PositionTitle: string;
-    PositionLocation: object;
+    PositionLocation: string;
     PositionStartDate: Date;
     PositionEndDate: Date;
-    JobSummary: Text;
-    TotalOpenings: number;
-    MinimumRange: number;
-    MaximumRange: number;
+    JobSummary: string;
+    MinRange: number;
+    MaxRange: number;
     RateIntervalCode: string;
 }

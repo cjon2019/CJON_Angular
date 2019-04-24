@@ -1,3 +1,14 @@
-<p>
-  user works!
-</p>
+<h1>Hi {{currentUser.first_name}}!</h1>
+<p>You're logged in with Angular 7!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li *ngIf="currentUser">
+        {{currentUser.email}} (
+        {{currentUser.first_name}} 
+        {{currentUser.last_name}})
+        <a (click)="deleteUser(currentUser.id)" class="text-danger">Delete</a>
+    </li>
+</ul>
+<div>
+    <app-edit></app-edit>
+</div>

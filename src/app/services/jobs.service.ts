@@ -1,62 +1,59 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Job } from '../models/Job';
+import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-const ApiUrl = '';
+const Api_Url = 'https://cjon-red-badge-project.herokuapp.com/api/v1';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JobsService {
 
-  job: Job;
 
-  constructor(private _http: HttpClient) { }
+  public jobsList = new BehaviorSubject<any>({ results: "none" });
 
-  getJobs() {
-    return this._http.get(`${ApiUrl}/Jobs`, { headers: this.getHeaders() });
+  constructor(private _http: HttpClient) {
+
   }
 
   private getHeaders() {
-    return new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`);
+    return new HttpHeaders().set('api-token', `${localStorage.getItem('id_token')}`);
   }
 
+  // Blank jobs page
+  getJobs() {
+    return this._http.get(`${Api_Url}/jobs/`, { headers: this.getHeaders() });
+  }
+  getJobsByState(state: string) {
+    return this._http.get(`${Api_Url}/jobs/state/${state}`, { headers: this.getHeaders() });
+  }
+
+  getJobByPosition(position_title: string) {
+    return this._http.get(`${Api_Url}/jobs/position/${position_title}`, { headers: this.getHeaders() });
+  }
   // getJob's parameters of id are what the specific json values for identification are.
-  
-
-  getJob(MatchedObjectId: number) {
-    return this._http.post(`${ApiUrl}/Jobs/${MatchedObjectId}`, { headers: this.getHeaders() });
+  getJobsByStateAndPosition(state: string, position_title: string) {
+    return this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() });
   }
 
-  getJobTitle(PositionTitle: string) {
-    return this._http.post(`${ApiUrl}/Jobs/${PositionTitle}`, { headers: this.getHeaders() });
+  getJobsByStateAndPositionTEST(state: string, position_title: string, cb: Function): void {
+    this._http.get(`${Api_Url}/jobs/${state}/${position_title}`, { headers: this.getHeaders() })
+      .subscribe(value => {
+        console.log(value);
+        this.jobsList.next(value);
+        cb();
+      });
+
   }
 
-  getJobLocation(PositionLocation: object) {
-    return this._http.post(`${ApiUrl}/Jobs/${PositionLocation}`, { headers: this.getHeaders() });
-  }
-
-  getJobStartDate(PositionStartDate: Date) {
-    return this._http.post(`${ApiUrl}/Jobs/${PositionStartDate}`, { headers: this.getHeaders() });
-  }
-
-  getJobEndDate(PositionEndDate: Date) {
-    return this._http.post(`${ApiUrl}/Jobs/${PositionEndDate}`, { headers: this.getHeaders() });
-  }
-
-  getJobSummary(JobSummary: string) {
-    return this._http.post(`${ApiUrl}/Jobs/${JobSummary}`, { header: this.getHeaders() });
-  } 
-
-  getJobMinimumRange(MinimumRange: number) {
-    return this._http.post(`${ApiUrl}/Jobs/${MinimumRange}`, { headers: this.getHeaders() });
-  }
-
-  getJobMaximumRange(MaximumRange: number) {
-    return this._http.post(`${ApiUrl}/Jobs/${MaximumRange}`, { headers: this.getHeaders() });
-  }
-
-  getJobRateIntervalCode(RateIntervalCode: string) {
-    return this._http.post(`${ApiUrl}/Jobs/${RateIntervalCode}`, { headers: this.getHeaders() });
+  test(state: string, position_title: string) {
+    return this._http.get(`${Api_Url}/jobs/test`, { headers: this.getHeaders() })
+      .pipe(map(job => {
+        console.log('Printing Data: ' + job);
+        localStorage.setItem('job', JSON.stringify(job));
+        // this.jobSubject.next(job);
+        return job;
+      }));
   }
 }

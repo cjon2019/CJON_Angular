@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { JobsService } from 'src/app/services/jobs.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Job } from 'src/app/models/Job';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-index',
@@ -7,27 +12,46 @@ import {FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./index.component.css']
 })
 export class IndexComponent implements OnInit {
+  loading = false;
+  submitted = false;
+  returnUrl: string;
+  job: Job;
+  jobsList: any;
+  jobSubscription: Subscription;
 
-  myForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  private _jobSearchForm: FormGroup;
+
+  constructor(
+    private _formBuilder: FormBuilder,
+    private _route: ActivatedRoute,
+    private _router: Router,
+    private _jobsService: JobsService,
+  ) { }
 
   ngOnInit() {
-    this.myForm = this.fb.group({
-      jobPosition: '',
-      city: '',
-      state: ''
-    })
+    this._jobSearchForm = this._formBuilder.group({
+      position_title: ['', Validators.required],
+      position_location: ['', Validators.required]
+    });
 
-    this.myForm.valueChanges.subscribe(console.log)
+    this._jobSearchForm.valueChanges.subscribe(console.log);
+    this.returnUrl = this._route.snapshot.queryParams['returnUrl'] || '/jobs';
   }
 
-  searchButtonClick(){
-    var jobPosition = this.myForm.value['jobPosition'];
-    var city = this.myForm.value['city'];
-    var state = this.myForm.value['state'];
-    console.log(jobPosition);
-    console.log(city);
-    console.log(state);
-  }
+  get f() { return this._jobSearchForm.controls; }
 
+
+  onSubmit() {
+    this.submitted = true;
+    if (this._jobSearchForm.invalid) {
+      console.log('Form Invalid');
+      return;
+    }
+
+    this.loading = true;
+    this._jobsService.getJobsByStateAndPositionTEST(this.f.position_location.value, this.f.position_title.value, () => {
+      this._router.navigate([this.returnUrl]);
+    });
+
+  }
 }

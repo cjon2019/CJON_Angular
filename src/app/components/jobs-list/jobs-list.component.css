@@ -1,0 +1,26 @@
+hr{
+    width: 250px;
+    height: 3px;
+    background-color: #3f50b5;
+    border: 0;
+    margin-bottom: 250px;
+}
+
+.jobsTable{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+    padding: 10px;
+}
+.rightAligned{
+    color: green;
+    position: absolute;
+    align-self: flex-end;
+    padding-right: 10px;
+}
+
+/* Joey Css */
+.container {
+    display: block;
+    width: 750px;
+}

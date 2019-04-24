@@ -1,12 +1,12 @@
 <div class="jumbotron">
   <h2>Index Component</h2>
   <hr />
-  <form action="#" class="JobSearchForm" [formGroup]="myForm">
+  <form action="#" class="JobSearchForm" [formGroup]="_jobSearchForm">
     <h3>What are you looking for?</h3>
-    <p>Value: {{ myForm.value | json }}</p>
-    <mat-form-field class = "full-width">
+    <p>Value: {{ _jobSearchForm.value | json }}</p>
+    <mat-form-field class="full-width">
       <label for="inputState">Job Position</label>
-      <input matInput type="text" class="form-control" formControlName="jobPosition"/>
+      <input matInput type="text" class="form-control" formControlName="position_title" />
     </mat-form-field>
     <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
     <br />
@@ -14,12 +14,12 @@
     <br>
     <div class="form-row">
       <div class="form-group col-md-8">
-        <mat-form-field class = "full-width">
-          <label for="inputCity">City</label>
-          <input matInput type="text" class="form-control" formControlName="city" />
+        <mat-form-field class="full-width">
+          <label for="inputCity">State</label>
+          <input matInput type="text" class="form-control" formControlName="position_location" />
         </mat-form-field>
       </div>
-      <div class="form-group col-md-4">
+      <!-- <div class="form-group col-md-4">
         <mat-form-field id = stateField class = "full-width">
           <label for="inputState">State</label>
           <select matNativeControl required class="form-control" name="state" formControlName="state">
@@ -78,9 +78,9 @@
           <option value="WY">Wyoming</option>
           </select>
         </mat-form-field>
-      </div>
+      </div> -->
     </div>
   </form>
   <br />
-  <button type="button" class="btn btn-primary btn-block" (click)="searchButtonClick()">Search</button>
+  <button type="button" class="btn btn-primary btn-block" (click)="onSubmit()">Search</button>
 </div>
