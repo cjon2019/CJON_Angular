@@ -14,6 +14,7 @@ export class JobsService {
   private jobSubject: BehaviorSubject<Job>;
   public job: Observable<Job>;
   public jobsList = new BehaviorSubject<any>({ results: "none" });
+  public jobsIndex: any;
 
   constructor(private _http: HttpClient) {
     this.jobSubject = new BehaviorSubject<Job>(JSON.parse(localStorage.getItem('job'))); //UNSURE ABOUT THIS

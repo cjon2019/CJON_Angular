@@ -21,13 +21,14 @@
       Max ${{ job['MatchedObjectDescriptor']['PositionRemuneration'][0]['MaximumRange']}}</p>
     <h2>{{ job.MatchedObjectDescriptor.PositionTitle }}</h2>
     <p><strong>Department : {{ job['MatchedObjectDescriptor']['DepartmentName']}}</strong></p>
-    <p><strong>Organization : </strong></p>
+    <p><strong>Organization : {{ job['MatchedObjectDescriptor']['OrganizationName']}} </strong></p>
     <br>
-    <p>Description: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}</p>
-    <p>Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }} </p>
+    <p><strong>Summary: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}</strong></p>
+    <p><u>Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }} </u></p>
   </div>
+  <hr>
 </div>
-
+<app-jobs-index></app-jobs-index>
 
 
 <!-- 

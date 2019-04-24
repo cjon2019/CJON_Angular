@@ -21,6 +21,7 @@ export class IndexComponent implements OnInit {
   jobSubscription: Subscription;
 
   private _jobSearchForm: FormGroup;
+  jobsIndex: any;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -39,6 +40,12 @@ export class IndexComponent implements OnInit {
     this._jobsService.getJobsByStateAndPosition(this.f.position_location.value, this.f.position_title.value).subscribe((jobsList: any) => {
       this.jobsList = jobsList;
       console.log(this.jobsList);
+    });
+
+
+    this._jobsService.getJobsByStateAndPosition(this.f.position_location.value, this.f.position_title.value).subscribe((jobsIndex: any) => {
+      this.jobsIndex = jobsIndex;
+      console.log(this.jobsIndex);
     });
 
     this._jobSearchForm.valueChanges.subscribe(console.log);

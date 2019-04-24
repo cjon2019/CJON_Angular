@@ -1,59 +1,53 @@
-<h1>Index</h1>
+<h1>Job</h1>
 
-<div>
-  <mat-table #table [dataSource]="dataSource">
-    <mat-header-row *matHeaderRowDef="columnNames"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columnNames;"></mat-row>
+<ul *ngIf="jobs">
+  <li *ngFor="let job of job">
+    <div class="jobsTable">
+      <p class="rightAligned">Salary Range: Min ${{ job.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}} -
+        Max ${{ job['MatchedObjectDescriptor']['PositionRemuneration'][0]['MaximumRange']}}</p>
+      <p><strong>Department : {{ job['MatchedObjectDescriptor']['DepartmentName']}}</strong></p>
+      <p><strong>Organization : {{ job['MatchedObjectDescriptor']['OrganizationName']}} </strong></p>
+      <br>
+      <p><strong>Summary: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}</strong></p>
+      <p><u>Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }} </u></p>
+    </div>
+    <p>
+      Matched Object Id: {{ job['MatchedObjectDescriptor']['PositionLocation']['LocationName']}}
+      Position Title: {{ job.MatchedObjectDescriptor.PositionTitle }}
+      Location: {{ job.MatchedObjectDescriptor.PositionLocation.LocationName }}
+      Job Summary: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}
+      Salary Min Range: {{ job.MatchedObjectDescriptor.PositionRemuneration.MinimumRange}}
+      Salary Max Range: {{ job['MatchedObjectDescriptor']['PositionRemuneration']['MaximumRange']}}
+      Position Start Date: {{ job['MatchedObjectDescriptor']['PositionStartDate'] }}
+      Department: {{ job['MatchedObjectDescriptor']['DepartmentName']}}
+      Organization: {{ job['MatchedObjectDescriptor']['OrganizationName']}}
+    </p>
+  </li>
+</ul>
 
-    <ng-container matColumnDef="MatchedObjectId">
-      <mat-header-cell *matHeaderCellDef> MatchedObjectId # </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.MatchedObjectId}} </mat-cell>
-    </ng-container>
+<!--<div *ngFor="let job of job">
+  <p>
+    Matched Object Id: {{ job['MatchedObjectDescriptor']['PositionLocation'][0]['LocationName']}}
+    Position Title: {{ job.MatchedObjectDescriptor.PositionTitle }}
+    Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }}
+    Job Summary: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}
+    Salary Min Range: {{ job.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}}
+    Salary Max Range: {{ job['MatchedObjectDescriptor']['PositionRemuneration'][0]['MaximumRange']}}
+    Position Start Date: {{ job['MatchedObjectDescriptor']['PositionStartDate'] }}
+    Department: {{ job['MatchedObjectDescriptor']['DepartmentName']}}
+    Organization: {{ job['MatchedObjectDescriptor']['OrganizationName']}}
 
-    <ng-container matColumnDef="PositionTitle">
-      <mat-header-cell *matHeaderCellDef> PositionTitle </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.PositionTitle}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="PositionLocation">
-      <mat-header-cell *matHeaderCellDef> PositionLocation </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.PositionLocation}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="PositionStartDate">
-      <mat-header-cell *matHeaderCellDef> PositionStartDate </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.PositionStartDate}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="PositionEndDate">
-      <mat-header-cell *matHeaderCellDef> PositionEndDate </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.PositionEndDate}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="JobSummary">
-      <mat-header-cell *matHeaderCellDef> JobSummary </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.JobSummary}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="TotalOpenings">
-      <mat-header-cell *matHeaderCellDef> TotalOpenings </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.TotalOpenings}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="MinimumRange">
-      <mat-header-cell *matHeaderCellDef> MinimumRange</mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.MinimumRange}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="MaximumRange">
-      <mat-header-cell *matHeaderCellDef> MaximumRange </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.MaximumRange}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="RateIntervalCode">
-      <mat-header-cell *matHeaderCellDef> RateIntervalCode </mat-header-cell>
-      <mat-cell *matCellDef="let job"> {{job.RateIntervalCode}} </mat-cell>
-    </ng-container>
-
-  </mat-table>
+  </p>
+  <div class="jobTable">
+    <p class="rightAligned">Salary Range: Min ${{ job.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}} -
+      Max ${{ job['MatchedObjectDescriptor']['PositionRemuneration'][0]['MaximumRange']}}</p>
+    <h2>{{ job.MatchedObjectDescriptor.PositionTitle }}</h2>
+    <p><strong>Department : {{ job['MatchedObjectDescriptor']['DepartmentName']}}</strong></p>
+    <p><strong>Organization : {{ job['MatchedObjectDescriptor']['OrganizationName']}} </strong></p>
+    <br>
+    <p><strong>Summary: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}</strong></p>
+    <p><u>Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }} </u></p>
+  </div>
+  <hr>
 </div>
+-->
