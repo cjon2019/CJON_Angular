@@ -38,7 +38,7 @@ import { ErrorInterceptor } from './components/helpers/error.interceptor';
 import { EditComponent } from './components/user/edit/edit.component';
 
 const routes = [
-  { path: 'test', component: UserComponent },
+  { path: 'profile', component: UserComponent },
   { path: 'users', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'jobs', component: JobsListComponent, canActivate: [AuthGuard] },
