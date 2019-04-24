@@ -26,8 +26,9 @@ export class UserService {
     return this._http.post(`${Api_Url}/users/`, user, { headers: this.getHeaders() });
   }
 
-  update(user: User) {
-    return this._http.put(`${Api_Url}/users/${user.id}`, user, { headers: this.getHeaders() });
+  update(user: User, id: number) {
+    console.log('printing user', user);
+    return this._http.put(`${Api_Url}/users/${id}`, user, { headers: this.getHeaders() });
   }
 
   delete(id: number) {
