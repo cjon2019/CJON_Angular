@@ -11,13 +11,10 @@ const Api_Url = 'https://cjon-red-badge-project.herokuapp.com/api/v1';
 })
 export class JobsService {
 
-  private jobSubject: BehaviorSubject<Job>;
-  public job: Observable<Job>;
+
   public jobsList = new BehaviorSubject<any>({ results: "none" });
 
   constructor(private _http: HttpClient) {
-    this.jobSubject = new BehaviorSubject<Job>(JSON.parse(localStorage.getItem('job'))); //UNSURE ABOUT THIS
-    this.job = this.jobSubject.asObservable();
 
   }
 

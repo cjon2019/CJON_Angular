@@ -4,7 +4,7 @@
 <div *ngFor="let job of jobs">
   <!-- Location Name -->
   <p>
-    Matched Object Id: {{ job['MatchedObjectDescriptor']['PositionLocation'][0]['LocationName']}}
+    Matched Object Id: {{ job.MatchedObjectId }}
     Position Title: {{ job.MatchedObjectDescriptor.PositionTitle }}
     Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }}
     Job Summary: {{ job['MatchedObjectDescriptor']['UserArea']['Details']['JobSummary']}}
@@ -27,6 +27,8 @@
     <p>Location: {{ job.MatchedObjectDescriptor.PositionLocation[0].LocationName }} </p>
   </div>
 </div>
+
+<mat-paginator></mat-paginator>
 
 
 
