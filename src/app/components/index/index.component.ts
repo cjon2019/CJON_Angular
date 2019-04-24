@@ -27,18 +27,12 @@ export class IndexComponent implements OnInit {
     private _route: ActivatedRoute,
     private _router: Router,
     private _jobsService: JobsService,
-    private _alertService: AlertService
   ) { }
 
   ngOnInit() {
     this._jobSearchForm = this._formBuilder.group({
       position_title: ['', Validators.required],
       position_location: ['', Validators.required]
-    });
-
-    this._jobsService.getJobsByStateAndPosition(this.f.position_location.value, this.f.position_title.value).subscribe((jobsList: any) => {
-      this.jobsList = jobsList;
-      console.log(this.jobsList);
     });
 
     this._jobSearchForm.valueChanges.subscribe(console.log);
