@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { User } from '../models/User';
+import { APIURL } from 'src/environments/environment.prod';
 
-const Api_Url = 'https://cjon-red-badge-project.herokuapp.com';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +28,7 @@ export class AuthService {
 
 
   login(email: string, password: string) {
-    return this._http.post<any>(`${Api_Url}/api/v1/users/login`, { email, password }, { headers: this.getHeaders() })
+    return this._http.post<any>(`${APIURL}/api/v1/users/login`, { email, password }, { headers: this.getHeaders() })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         console.log('this is my user token' + user.jwt_token)
