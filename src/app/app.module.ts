@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import {
   MatToolbarModule,
@@ -33,6 +34,8 @@ import { AlertComponent } from './components/alert/alert.component';
 
 import { JwtInterceptor } from './components/helpers/jwt.interceptor';
 import { ErrorInterceptor } from './components/helpers/error.interceptor';
+import { EditComponent } from './components/user/edit/edit.component';
+import { PaginatorComponent } from './components/jobs-list/paginator/paginator.component';
 
 const routes = [
   { path: 'test', component: UserComponent },
@@ -64,7 +67,9 @@ const routes = [
     UserComponent,
     JobsListComponent,
     FooterComponent,
-    AlertComponent
+    AlertComponent,
+    EditComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +82,8 @@ const routes = [
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     AuthService,
