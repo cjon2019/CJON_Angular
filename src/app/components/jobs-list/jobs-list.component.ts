@@ -2,8 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Job } from 'src/app/models/Job';
 import { JobsService } from 'src/app/services/jobs.service';
 import { Subscription } from 'rxjs';
-import { MatPaginator, MatSort } from '@angular/material';
-import { JobTableDataSource } from './job-table-datasource';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-jobs-list',
@@ -17,10 +16,10 @@ export class JobsListComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
-  dataSource: JobTableDataSource;
+  dataSource: MatTableDataSource<any>;
 
   /** Columns displayed in the table. Columns IDs can be added, removed, or reordered. */
-  displayedColumns = ['matched_object_id', 'position_title', 'position_location', 'min_range', 'max_range'];
+  displayedColumns = ['MatchedObjectId', 'PositionTitle', 'PositionLocation', 'MinimumRange', 'MaximumRange'];
 
   constructor(private _jobService: JobsService) {
   }
@@ -28,15 +27,16 @@ export class JobsListComponent implements OnInit {
   ngOnInit() {
     this.jobSubscription = this._jobService.jobsList.subscribe(val => {
       if (val.results) {
-        this.jobs = [];
+        this.dataSource = new MatTableDataSource([]);
       } else {
-        this.jobs = val['SearchResult']['SearchResultItems'];
+        this.dataSource = new MatTableDataSource(val['SearchResult']['SearchResultItems']);
       }
       console.log(this.jobs);
     });
 
 
-    this.dataSource = new JobTableDataSource(this.paginator, this.sort);
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
 }

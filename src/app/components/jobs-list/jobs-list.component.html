@@ -32,31 +32,31 @@
   <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
 
     <!-- Id Column -->
-    <ng-container matColumnDef="matched_object_id">
+    <ng-container matColumnDef="MatchedObjectId">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.matched_object_id}}</mat-cell>
+      <mat-cell *matCellDef="let row">{{row.MatchedObjectId}}</mat-cell>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="position_title">
+    <ng-container matColumnDef="PositionTitle">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Job Title</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.position_title}}</mat-cell>
+      <mat-cell *matCellDef="let row">{{row.MatchedObjectDescriptor.PositionTitle}}</mat-cell>
     </ng-container>
 
     <!-- Amount Column -->
-    <ng-container matColumnDef="position_location">
+    <ng-container matColumnDef="PositionLocation">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Location</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.position_location}}</mat-cell>
+      <mat-cell *matCellDef="let row">{{row.MatchedObjectDescriptor.PositionLocation[0].CityName}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="min_range">
+    <ng-container matColumnDef="MinimumRange">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Min Salary</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.min_range}}</mat-cell>
+      <mat-cell *matCellDef="let row">{{row.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}}</mat-cell>
     </ng-container>
 
-    <ng-container matColumnDef="max_range">
+    <ng-container matColumnDef="MaximumRange">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Max Salary</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.max_range}}</mat-cell>
+      <mat-cell *matCellDef="let row">{{row.MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
