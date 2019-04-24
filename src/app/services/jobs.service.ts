@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Job } from '../models/Job';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 const Api_Url = 'https://cjon-red-badge-project.herokuapp.com/api/v1';
