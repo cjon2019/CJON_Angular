@@ -28,7 +28,7 @@ export class AuthService {
 
 
   login(email: string, password: string) {
-    return this._http.post<any>(`${APIURL}/api/v1/users/login`, { email, password }, { headers: this.getHeaders() })
+    return this._http.post<any>(`${APIURL}/users/login`, { email, password }, { headers: this.getHeaders() })
       .pipe(map(user => {
         // login successful if there's a jwt token in the response
         console.log('this is my user token' + user.jwt_token)
