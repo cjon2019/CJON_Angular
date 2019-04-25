@@ -51,12 +51,12 @@
 
     <ng-container matColumnDef="MinimumRange">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Min Salary</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}}</mat-cell>
+      <mat-cell *matCellDef="let row">${{row.MatchedObjectDescriptor.PositionRemuneration[0].MinimumRange}}</mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="MaximumRange">
       <mat-header-cell *matHeaderCellDef mat-sort-header>Max Salary</mat-header-cell>
-      <mat-cell *matCellDef="let row">{{row.MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange}}</mat-cell>
+      <mat-cell *matCellDef="let row">${{row.MatchedObjectDescriptor.PositionRemuneration[0].MaximumRange}}</mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

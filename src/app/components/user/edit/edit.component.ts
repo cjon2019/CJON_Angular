@@ -25,18 +25,18 @@ export class EditComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _router: Router,
     private _userService: UserService
-  ) { 
+  ) {
     this.createForm();
   }
-    
+
   ngOnInit() {
     // let user = localStorage.getItem('user');
     // console.log(user);
     // if(!user) {
-      //   alert("Invalid action.")
-      //   this._router.navigate(['/test']);
-      //   return;
-      // }
+    //   alert("Invalid action.")
+    //   this._router.navigate(['/test']);
+    //   return;
+    // }
     this.currentUserSubscription = this._authService.currentUser.subscribe(user => {
       console.log(user)
       this.currentUser = user;
@@ -50,7 +50,10 @@ export class EditComponent implements OnInit {
     this._userService.update(this.editForm.value, this.currentUser.id)
       .subscribe(
         data => {
-          this._router.navigate(['/test']);
+          this.currentUser.email = data['email'];
+          this.currentUser.first_name = data['first_name'];
+          this.currentUser.last_name = data['last_name'];
+          this._router.navigate(['/profile']);
         },
         error => {
           alert(error);
