@@ -17,3 +17,13 @@ mat-form-field input{
     border-radius: 2mm;
     border-color: #EF8354
 }
+
+
+.btn-primary {
+    
+      color: #fff;
+      background-color: #5BC3EB;
+      border-color: whitesmoke;
+      width: 75%;
+      margin: auto;
+}

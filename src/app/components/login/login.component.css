@@ -23,6 +23,12 @@ h1,h4 {
 .jumbotron {
     width: 50%;
     border-style: solid;
-    border-radius: 2mm;
+    border-radius: 1mm;
     border-color: #EF8354
+}
+
+.mat-raised-button {
+    display: block;
+    margin: auto;
+    background-color: #5BC3EB;
 }

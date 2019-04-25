@@ -21,3 +21,13 @@ h1,h4 {
     border-color: #EF8354
 }
 
+
+.mat-fab.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-mini-fab.mat-primary,
+.mat-raised-button.mat-primary {
+  background-color: #5BC3EB;
+  display: block;
+  margin: auto;
+  width: 50%
+}
